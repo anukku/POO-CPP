@@ -2,7 +2,7 @@
 using namespace std;
 class Tastatura
 {
-public://modificator de acces
+public:
 	int nr_taste;//atributele clasei
 	string marca;
 	
@@ -38,4 +38,11 @@ int main()
 	cout<<logitech.GNR()<<endl;
 	cout<<logitech.GM()<<endl;
 
+	A4tech.Set_taste(105);
+	A4tech.set_m("A4T");
+	cout<<A4tech.GNR()<<endl;
+	cout<<A4tech.GM()<<endl;	
+	
+	logitech.Upgrade(8);
+	cout<<logitech.GNR()<<endl;
 }
