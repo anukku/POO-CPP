@@ -2,7 +2,7 @@
 using namespace std;
 class Tastatura
 {
-public:
+public://modificator de acces
 	int nr_taste;//atributele clasei
 	string marca;
 	
