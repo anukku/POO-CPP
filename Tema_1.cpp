@@ -53,3 +53,13 @@ int main()
     zburator.UPGRADE_2("MODEL NOU");
     cout << zburator.get_nume() << endl;
 }
+//1 setter - aloca valori pentru atribute
+//2 getter - 
+//3 obiectul - este o instanta
+//4 nu pot sa am return in void
+//5 
+//6 
+//7 
+//8 pentru a creea obiectul
+//9 vietate broscuta
+//10  
