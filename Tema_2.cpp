@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 using namespace std;
 class PISTOL
 {
@@ -63,21 +64,21 @@ public:
     void pune_piedica() // 14
     {
         if (piedica == true)
-            cout << "Eroare pune_piedica";
+            cout << "Eroare pune_piedica!";
         else
             piedica = true;
     }
     void scoate_piedica() // 15
     {
         if (piedica == false)
-            cout << "Eroare scoate_piedica";
+            cout << "Eroare scoate_piedica!";
         else
             piedica = false;
     }
     void incarca1() // 16
     {
         if (nr_curent_gloante == nr_maxim_gloante)
-            cout << "Eroare incarca1";
+            cout << "Eroare incarca1!";
         else
             nr_curent_gloante = nr_maxim_gloante;
     }
@@ -86,27 +87,36 @@ public:
         if (nr_curent_gloante + g > nr_maxim_gloante)
         {
             nr_curent_gloante = nr_maxim_gloante;
-            cout << "Eroare incarca2";
+            cout << "Eroare incarca2!";
         }
         else
             nr_curent_gloante = nr_curent_gloante + g;
     }
     void trage() // 19
     {
-        if (nr_curent_gloante >= 1 && stare_pistol == true && piedica == true)
-            nr_curent_gloante -= 1;
-        else
+        if (stare_pistol == true && piedica == false)
         {
-            stare_pistol = false;
-            cout << "Eroare trage";
-        };
+            if (nr_curent_gloante > 1)
+                nr_curent_gloante--;
+            else
+            {
+                stare_pistol = false;
+                cout << "Eroare trage! S-a tras fara gloante!" << endl;
+            }
+        }
+        else
+            cout << "Eroare trage! Pistolul este stricat sau piedica este pusa!" << endl;
     }
     void trage_repetat(int repetari) // 20
     {
         while (repetari > 0)
         {
-            nr_curent_gloante -= 1;
-            repetari -= 1;
+            nr_curent_gloante--;
+            repetari--;
+            if (nr_curent_gloante <= 0)
+            {
+                stare_pistol = false;
+            }
         }
     }
     void repara() // 21
@@ -119,7 +129,7 @@ public:
         else
             nr_curent_gloante = nr_maxim_gloante;
     }
-    void categorie_pret() // 21
+    void categorie_pret() // 22
     {
         switch ((int)pret)
         {
@@ -142,7 +152,7 @@ public:
             cout << "Peste 50 euro";
         }
     }
-    PISTOL() // 22
+    PISTOL() // 23
     {
         nr_maxim_gloante = 7;
         marca = "Glock";
@@ -151,7 +161,7 @@ public:
         piedica = true;
         cout << "Constructor implicit" << endl;
     }
-    PISTOL(int MAX, string MAR, int PRE, bool STA_P, bool PIE)
+    PISTOL(int MAX, string MAR, int PRE, bool STA_P, bool PIE) // 24
     {
         nr_maxim_gloante = MAX;
         marca = MAR;
@@ -160,16 +170,78 @@ public:
         piedica = PIE;
         cout << "Constructor cu parametrii";
     }
-    PISTOL(const PISTOL &ob)
+    PISTOL(const PISTOL &ob) // 25
     {
         nr_maxim_gloante = ob.nr_maxim_gloante;
         marca = ob.marca;
         pret = ob.pret;
         stare_pistol = ob.stare_pistol;
         piedica = ob.piedica;
+        cout << "Constructor de copiere";
     }
 };
 int main()
 {
-    return 0;
+    // 26
+    PISTOL P1;
+    P1.set_marca("2mm Kolibri");
+    P1.set_nr_maxim_gloante(4);
+    P1.set_piedica(false);
+    P1.set_pret(37);
+    P1.set_stare_pistol(true);
+    P1.incarca1(); // 27
+    // 28
+    cout << "Pistolul P1 are " << P1.display_6() << " gloante din maxim " << P1.display_1() << ", costa " << P1.display_2() << " euro, este marca " << P1.display_3() << ", este ";
+    // P1.set_stare_pistol(true);
+    P1.display_4();
+    cout << " si are piedica ";
+    // P1.set_piedica(false);
+    P1.display_5();
+    cout << "." << endl;
+    P1.trage(); // 29
+    // 30
+    cout << "Pistolul P1 are " << P1.display_6() << " gloante din maxim " << P1.display_1() << ", costa " << P1.display_2() << " euro, este marca " << P1.display_3() << ", este ";
+    P1.display_4();
+    cout << " si are piedica ";
+    P1.display_5();
+    cout << "." << endl;
+    P1.pune_piedica();                    // 31
+    cout << "Pistolul are acum piedica "; // 32
+    P1.display_5();
+    cout << "." << endl;
+    P1.trage();                                                                                               // 33
+    P1.scoate_piedica();                                                                                      // 34
+    P1.trage();                                                                                               // 35
+    cout << "Pistolul are acum " << P1.display_6() << " gloante din maxim " << P1.display_1() << "." << endl; // 36
+    P1.trage_repetat(8);                                                                                      // 37
+    cout << "S-a tras de " << abs(P1.display_6()) << " ori fara gloante, iar pistolul este acum ";            // 38
+    P1.display_4();
+    cout << "!" << endl;
+    P1.repara();                                                                                                                                                                    // 39
+    cout << "Pistolul P1 are " << P1.display_6() << " gloante din maxim " << P1.display_1() << ", costa " << P1.display_2() << " euro, este marca " << P1.display_3() << ", este "; // 40
+    P1.display_4();
+    cout << " si are piedica ";
+    P1.display_5();
+    cout << "." << endl;
+    P1.trage_repetat(3);                                                   // 41
+    cout << "Mai sunt " << P1.display_6() << " gloante si pistolul este "; // 42
+    P1.display_4();
+    cout << "." << endl;
+
+    PISTOL P2;                                                                                                                                                                      // 43
+    P2.trage();                                                                                                                                                                     // 44
+    cout << "Pistolul P2 are " << P2.display_6() << " gloante din maxim " << P2.display_1() << ", costa " << P2.display_2() << " euro, este marca " << P2.display_3() << ", este "; // 45
+    P2.display_4();
+    cout << " si are piedica ";
+    P2.display_5();
+    cout << "." << endl;
+    P2.categorie_pret(); // 46
+    cout << endl;
+    P2.pune_piedica();                                                                                                                                                              // 47
+    P2.trage();                                                                                                                                                                     // 48
+    cout << "Pistolul P2 are " << P2.display_6() << " gloante din maxim " << P2.display_1() << ", costa " << P2.display_2() << " euro, este marca " << P2.display_3() << ", este "; // 49
+    P2.display_4();
+    cout << " si are piedica ";
+    P2.display_5();
+    cout << "." << endl;
 }
