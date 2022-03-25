@@ -43,14 +43,14 @@ public:
     {
         return marca;
     }
-    string display_4() // 11
+    void display_4() // 11
     {
         if (stare_pistol == true)
             cout << "functional";
         else
             cout << "stricat";
     }
-    string display_5() // 12
+    void display_5() // 12
     {
         if (piedica == true)
             cout << "pusa";
@@ -155,7 +155,7 @@ public:
     PISTOL() // 23
     {
         nr_maxim_gloante = 7;
-        marca = "Glock";
+        marca = "ALFA Defender";
         pret = 45;
         stare_pistol = true;
         piedica = true;
@@ -185,7 +185,7 @@ int main()
     // 26
     PISTOL P1;
     P1.set_marca("2mm Kolibri");
-    P1.set_nr_maxim_gloante(4);
+    P1.set_nr_maxim_gloante(5);
     P1.set_piedica(false);
     P1.set_pret(37);
     P1.set_stare_pistol(true);
@@ -235,13 +235,49 @@ int main()
     cout << " si are piedica ";
     P2.display_5();
     cout << "." << endl;
+    cout << "Categoria de pret in care se incadreaza este de ";
     P2.categorie_pret(); // 46
     cout << endl;
-    P2.pune_piedica();                                                                                                                                                              // 47
+    P2.pune_piedica();
+    cout << endl;                                                                                                                                                                   // 47
     P2.trage();                                                                                                                                                                     // 48
     cout << "Pistolul P2 are " << P2.display_6() << " gloante din maxim " << P2.display_1() << ", costa " << P2.display_2() << " euro, este marca " << P2.display_3() << ", este "; // 49
     P2.display_4();
     cout << " si are piedica ";
     P2.display_5();
     cout << "." << endl;
+    // 50, 51: se creeaza obiectul P1, dar nu si P2, pentru ca nu se mai apeleaza automat constructorul P2
+    cout << "Pistolul P1 are " << P1.display_6() << " gloante din maxim " << P1.display_1() << ", costa " << P1.display_2() << " euro, este marca " << P1.display_3() << ", este "; // 52
+    P1.display_4();
+    cout << " si are piedica ";
+    P1.display_5();
+    cout << "." << endl;
+    cout << "Pistolul P2 are " << P2.display_6() << " gloante din maxim " << P2.display_1() << ", costa " << P2.display_2() << " euro, este marca " << P2.display_3() << ", este "; // 52
+    P2.display_4();
+    cout << " si are piedica ";
+    P2.display_5();
+    cout << "." << endl;
+    // 53, 54: nu se creeaza niciunul din obiecte " no default constructor exists for class "PISTOL" ??? "
+    // 55
+    // 56: constructorul implicit se apeleaza si pentru P1 si P2
+    PISTOL P3;// 57
+    P3.incarca1();
+    cout << "Pistolul P3 are " << P3.display_6() << " gloante din maxim " << P3.display_1() << ", costa " << P3.display_2() << " euro, este marca " << P3.display_3() << ", este "; // 58
+    P3.display_4();
+    cout << " si are piedica ";
+    P3.display_5();
+    cout << "." << endl;
+    P3.set_marca("ALFA Combat");// 59
+    P3.set_piedica(false);
+    P3.set_nr_maxim_gloante(10);
+    P3.set_pret(15);
+    P3.set_stare_pistol(true);
+    P3.incarca1();
+    cout << "Pistolul P3 are " << P3.display_6() << " gloante din maxim " << P3.display_1() << ", costa " << P3.display_2() << " euro, este marca " << P3.display_3() << ", este "; // 60
+    P3.display_4();
+    cout << " si are piedica ";
+    P3.display_5();
+    cout << "." << endl;
+    // 61: constructorul implicit este apelat mereu la creearea unui obiect, dar daca sunt apelati setterii se modifica atributele  
+    // 62:
 }
