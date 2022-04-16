@@ -1,69 +1,77 @@
 #include <iostream>
 using namespace std;
 
-class pistol {
-	private:
-	int nr_gloante;
-	string stare;
-	public: 
-	int get_nr_gloante() {
-		return nr_gloante;
-	}
-	string get_stare() {
-		return stare;
-	}
-	pistol(); /*{
-		nr_gloante = 0;
-		stare = "neincarcat";
-    cout << "Constructor implicit" << endl;
-	}*/
-	pistol(int a, string b); /*{
-		nr_gloante = a;
-		stare = b;
+class pistol
+{
+private:
+    int nr_gloante;
+    string stare;
+
+public:
+    int get_nr_gloante()
+    {
+        return nr_gloante;
+    }
+    string get_stare()
+    {
+        return stare;
+    }
+    pistol();                /*{
+                       nr_gloante = 0;
+                       stare = "neincarcat";
+                   cout << "Constructor implicit" << endl;
+                   }*/
+    pistol(int a, string b); /*{
+        nr_gloante = a;
+        stare = b;
     cout << "Constructor cu parametrii" << endl;
-	}*/
-	pistol(pistol &ob); /*{
-		nr_gloante = ob.nr_gloante;
-		stare = ob.stare;
-    cout << "Constructor de copiere" << endl;
-  }*/
-  ~pistol()
-  {
-    cout << "Obiectul  a fost sters" << endl;
-  }
+    }*/
+    pistol(pistol &ob);      /*{
+             nr_gloante = ob.nr_gloante;
+             stare = ob.stare;
+         cout << "Constructor de copiere" << endl;
+       }*/
+    ~pistol()
+    {
+        cout << "Obiectul  a fost sters" << endl;
+    }
 };
-  pistol ::	pistol() {
-		nr_gloante = 0;
-		stare = "stricat";
+pistol ::pistol()
+{
+    nr_gloante = 0;
+    stare = "stricat";
     cout << "Constructor implicit" << endl;
-	}
-  pistol :: pistol(int a, string b) {
-		nr_gloante = a;
-		stare = b;
+}
+pistol ::pistol(int a, string b)
+{
+    nr_gloante = a;
+    stare = b;
     cout << "Constructor cu parametrii" << endl;
-	}
-  pistol :: pistol(pistol &ob) {
-		nr_gloante = ob.nr_gloante;
-		stare = ob.stare;
+}
+pistol ::pistol(pistol &ob)
+{
+    nr_gloante = ob.nr_gloante;
+    stare = ob.stare;
     cout << "Constructor de copiere" << endl;
-  }
-  pistol f10(pistol &p)
-  {
+}
+pistol f10(pistol &p)
+{
     cout << " x " << endl;
     return p;
-  }
-int main() {
-	pistol P1;
-	pistol P2(20, "functional");
-	pistol P3(P2);
-  pistol P4;
-  P4 = P3;
-	cout << "Pistolul 1 are " << P1.get_nr_gloante() << " gloante si este " <<P1.get_stare() << "." << endl;
-	cout << "Pistolul 2 are " << P2.get_nr_gloante() << " gloante si este " <<P2.get_stare() << "." << endl;
-	cout << "Pistolul 3 are " << P3.get_nr_gloante() << " gloante si este " <<P3.get_stare() << "." << endl;
-  cout << "Pistolul 4 are " << P4.get_nr_gloante() << " gloante si este " <<P4.get_stare() << "." << endl;
-	f10(P1);
-  return 0;
+}
+int main()
+{
+    pistol P1;
+    pistol P2(20, "functional");
+    pistol P3(P2);
+    pistol P4;
+    P4 = P3;
+    cout << "Pistolul 1 are " << P1.get_nr_gloante() << " gloante si este " << P1.get_stare() << "." << endl;
+    cout << "Pistolul 2 are " << P2.get_nr_gloante() << " gloante si este " << P2.get_stare() << "." << endl;
+    cout << "Pistolul 3 are " << P3.get_nr_gloante() << " gloante si este " << P3.get_stare() << "." << endl;
+    cout << "Pistolul 4 are " << P4.get_nr_gloante() << " gloante si este " << P4.get_stare() << "." << endl;
+    f10(P1);
+    return 0;
 }
 /* nr gloante si stare(string)
 getter pt fiecare
@@ -72,12 +80,12 @@ main: cate un biect pt fiecare constructor
 sa se afiseze caract pistol intr-o fraza compacta de genul pistol p1 are x nr gloante si este incarcat
 fiecare contructor are un mesaj de informare
 */
-//OPERATORUL DE REZOLUTIE -> ::
+// OPERATORUL DE REZOLUTIE -> ::
 /*
 ! operatorul de rezolutie precizeaza apartenenta unei metode la o clasa
 ! permite scrierea definitiei unei metode inafara clasei pastrand declaratia in interiorul clasei
 */
-//DESTRUCTOR
+// DESTRUCTOR
 /*
 ! elibereaza memoria pentru obiecte
 ! sterge spatiul ocupat de atributele obiectului inclusiv obiectul in sine
@@ -86,7 +94,7 @@ fiecare contructor are un mesaj de informare
 ! recomandabil in corp ar trebui pus un mesaj de informare
 ! destructorul va fi apelat automat pentru atatea obiecte cate are clasa declarate in functia main
 */
-//FUNCTII NEMEMBRE ALE CLASEI
+// FUNCTII NEMEMBRE ALE CLASEI
 /*
 ! nu apartin clasei
 ! nu se scriu in interiorul clasei

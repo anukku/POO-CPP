@@ -260,14 +260,14 @@ int main()
     // 53, 54: nu se creeaza niciunul din obiecte " no default constructor exists for class "PISTOL" ??? "
     // 55
     // 56: constructorul implicit se apeleaza si pentru P1 si P2
-    PISTOL P3;// 57
+    PISTOL P3; // 57
     P3.incarca1();
     cout << "Pistolul P3 are " << P3.display_6() << " gloante din maxim " << P3.display_1() << ", costa " << P3.display_2() << " euro, este marca " << P3.display_3() << ", este "; // 58
     P3.display_4();
     cout << " si are piedica ";
     P3.display_5();
     cout << "." << endl;
-    P3.set_marca("ALFA Combat");// 59
+    P3.set_marca("ALFA Combat"); // 59
     P3.set_piedica(false);
     P3.set_nr_maxim_gloante(10);
     P3.set_pret(15);
@@ -278,6 +278,19 @@ int main()
     cout << " si are piedica ";
     P3.display_5();
     cout << "." << endl;
-    // 61: constructorul implicit este apelat mereu la creearea unui obiect, dar daca sunt apelati setterii se modifica atributele  
-    // 62:
+    // 61: constructorul implicit este apelat mereu la creearea unui obiect, dar daca sunt apelati setterii se modifica atributele
+    /*
+    62:
+    PISTOL()
+{
+    nr_maxim_gloante = 7;
+    marca = "ALFA Defender";
+    pret = 45;
+
+PISTOL(bool STA_P, bool PIE)
+{
+    stare_pistol = STA_P;
+    piedica = PIE;
+}
+    */
 }
